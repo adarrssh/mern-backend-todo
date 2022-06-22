@@ -21,6 +21,14 @@ app.get("/", (req, res) => res.send("server is active"));
 // use routes
 app.use("/api/todo", todo);
 
+app.use((req,res,next)=>{
+    res.setHeader('Access-Control-Allow-Origin','*');
+    res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE');
+    res.setHeader('Access-Control-Allow-Methods','Content-Type','Authorization');
+    next(); 
+})
+
+
 // setting up port
 
 const PORT = process.env.PORT || 8000;
